@@ -1,0 +1,56 @@
+{
+  "overall_oof_rmse": 308.01274026459765,
+  "base_model_params": {
+    "learning_rate": 0.08,
+    "max_iter": 1650,
+    "max_depth": 20,
+    "max_leaf_nodes": 40,
+    "min_samples_leaf": 20,
+    "max_bins": 160,
+    "l2_regularization": 0.07,
+    "early_stopping": false
+  },
+  "n_folds": 10,
+  "fold_metrics": [
+    {
+      "fold": 1,
+      "rmse": 283.8939050648717
+    },
+    {
+      "fold": 2,
+      "rmse": 292.57391968178877
+    },
+    {
+      "fold": 3,
+      "rmse": 323.9911690431353
+    },
+    {
+      "fold": 4,
+      "rmse": 296.87880928443127
+    },
+    {
+      "fold": 5,
+      "rmse": 338.11839186754275
+    },
+    {
+      "fold": 6,
+      "rmse": 368.71931631764016
+    },
+    {
+      "fold": 7,
+      "rmse": 303.10452756358364
+    },
+    {
+      "fold": 8,
+      "rmse": 287.0935095692313
+    },
+    {
+      "fold": 9,
+      "rmse": 296.05295980589966
+    },
+    {
+      "fold": 10,
+      "rmse": 277.84088036327756
+    }
+  ]
+}
