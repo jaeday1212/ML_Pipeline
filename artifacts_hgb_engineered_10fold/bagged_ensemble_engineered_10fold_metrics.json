@@ -1,0 +1,66 @@
+{
+  "overall_oof_rmse": 303.30261899986266,
+  "base_model_params": {
+    "learning_rate": 0.03,
+    "max_iter": 3000,
+    "max_depth": 18,
+    "max_leaf_nodes": 84,
+    "min_samples_leaf": 15,
+    "max_bins": 160,
+    "l2_regularization": 0.1,
+    "early_stopping": false,
+    "scoring": "neg_root_mean_squared_error"
+  },
+  "n_folds": 10,
+  "fold_metrics": [
+    {
+      "fold": 1,
+      "rmse": 280.88682649950977
+    },
+    {
+      "fold": 2,
+      "rmse": 289.1676632016187
+    },
+    {
+      "fold": 3,
+      "rmse": 307.3122191745405
+    },
+    {
+      "fold": 4,
+      "rmse": 290.68727116889903
+    },
+    {
+      "fold": 5,
+      "rmse": 335.4692928419343
+    },
+    {
+      "fold": 6,
+      "rmse": 365.8843520474156
+    },
+    {
+      "fold": 7,
+      "rmse": 299.8031156603709
+    },
+    {
+      "fold": 8,
+      "rmse": 283.9164726927665
+    },
+    {
+      "fold": 9,
+      "rmse": 290.1630039925049
+    },
+    {
+      "fold": 10,
+      "rmse": 278.16093270040494
+    }
+  ],
+  "feature_columns": [
+    "hour",
+    "dayofweek",
+    "year",
+    "dayofyear",
+    "weather_final",
+    "temp",
+    "clouds_all"
+  ]
+}
