@@ -1,0 +1,39 @@
+# HW9 Project - Git Ignore Rules
+# Only track files essential for the final submission
+
+# Python cache
+__pycache__/
+*.pyc
+*.pyo
+
+# Jupyter checkpoints
+.ipynb_checkpoints/
+
+# Large CSV files (keep clean versions)
+kaggle.csv
+TRAIN.csv
+
+# Old/experimental folders not part of final submission
+artifacts_for_analysis/
+old_best_263/
+prior_best_submission/
+
+# Model artifacts (binary/intermediate files)
+*.npy
+*.pkl
+*.joblib
+
+# CatBoost logs
+catboost_info/
+
+# Generated outputs (regenerate from scripts)
+HW_9.docx
+PLOTS/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# IDE settings
+.vscode/
+.idea/
