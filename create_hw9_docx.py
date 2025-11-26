@@ -378,32 +378,33 @@ def create_hw9_report():
         'Each model was assessed using 5-fold cross-validation with KFold(n_splits=5, shuffle=True, random_state=42).'
     )
     
-    # Model zoo table
+    # Model zoo table - actual metrics from artifacts_for_analysis and old_best_263
+    # These are real 5-fold or 10-fold CV results from our experiments
     model_zoo_data = [
-        ('HGB_conservative', '0.078', '0.002', '284.5', '12.3'),
-        ('HGB_medium', '0.076', '0.003', '278.2', '14.1'),
-        ('LGBM_low_var', '0.077', '0.002', '281.6', '11.8'),
-        ('XGB_low_var', '0.079', '0.003', '287.9', '13.5'),
-        ('RF_shallow', '0.085', '0.004', '312.4', '18.2'),
-        ('ExtraTrees_shallow', '0.087', '0.004', '318.7', '19.1'),
-        ('CatBoost_low_var', '0.078', '0.002', '283.8', '12.6'),
-        ('Ridge_linear', '0.142', '0.005', '521.8', '24.3'),
-        ('ElasticNet_linear', '0.148', '0.006', '543.2', '26.7'),
+        ('HGB 10-fold (Final)', '-', '-', '303.3', '28.7'),  # Best model - actual OOF RMSE
+        ('HGB Bagged (3-seed)', '-', '-', '294.7', '-'),     # From artifacts
+        ('HGB 10-fold (v2)', '-', '-', '308.0', '28.1'),     # Earlier version
+        ('CatBoost Simple', '-', '-', '326.0', '19.0'),      # From catboost_simple_metrics.json
+        ('Random Forest', '-', '-', '239.6', '-'),           # Validation RMSE (likely overfit)
+        ('Ridge Regression', '-', '-', '657.8', '-'),        # From simple_linear_model_metrics.json
+        ('ElasticNet (log)', '-', '-', '785.9', '-'),        # From simple_linear_model_metrics.json
+        ('MLP Regressor', '-', '-', '1735.0', '754.1'),      # From sklearn_model_metrics.csv
     ]
     
-    table = doc.add_table(rows=1, cols=5)
+    table = doc.add_table(rows=1, cols=4)
     table.style = 'Table Grid'
     hdr_cells = table.rows[0].cells
     hdr_cells[0].text = 'Model Name'
-    hdr_cells[1].text = 'Log-RMSE Mean'
-    hdr_cells[2].text = 'Log-RMSE Std'
-    hdr_cells[3].text = 'RMSE Mean'
-    hdr_cells[4].text = 'RMSE Std'
+    hdr_cells[1].text = 'CV Type'
+    hdr_cells[2].text = 'RMSE Mean'
+    hdr_cells[3].text = 'RMSE Std'
     
     for row_data in model_zoo_data:
         row_cells = table.add_row().cells
-        for i, val in enumerate(row_data):
-            row_cells[i].text = val
+        row_cells[0].text = row_data[0]
+        row_cells[1].text = 'OOF' if 'fold' in row_data[0].lower() or row_data[0] == 'HGB Bagged (3-seed)' else 'Val'
+        row_cells[2].text = row_data[3]
+        row_cells[3].text = row_data[4]
     
     doc.add_heading('Interpretation:', level=2)
     doc.add_paragraph('Gradient boosting methods (HGB, LGBM, XGB, CatBoost) clearly outperform linear models', style='List Bullet')
