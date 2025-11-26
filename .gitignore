@@ -41,5 +41,3 @@ Thumbs.db
 
 # Specific artifacts you no longer want tracked
 blended_263_hgb10_bias_corrected.csv
-
-transformers.py
